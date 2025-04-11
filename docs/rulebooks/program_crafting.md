@@ -51,7 +51,7 @@ They can crash, mutate, expose you, or take out a fortress node in one click.
 | **ROM Core**     | Base logic structure: attack, stealth, utility, etc. |
 | **Snippets**     | Modular code blocks that determine behavior |
 | **Flags**        | Optional execution modifiers (auto_eject, delayed, etc.) |
-| **Payload**      | Embedded secondary program (e.g. trojan, virus) |
+| **Payload**      | A payload is nothing else than a snippet flagged as `hidden` |
 | **Hidden Logic** | Snippets that are concealed from standard scans |
 | **Description**  | Player-facing metadata (editable) |
 
