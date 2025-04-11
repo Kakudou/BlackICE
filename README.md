@@ -62,27 +62,6 @@ You're always being watched. Every choice leaves digital fingerprints.
 
 ---
 
-## 🧭 Roadmap (Agile Sprints)
-
-We’re going full lean/agile with modular goals. That's an ebauch of **sprints**.
-
-**Current phase: Sprint 1**
-- Persona system with RAM, trace, skills
-- Basic node travel and log tracking
-- First parser commands: `connect`, `scan`, `move`, `show_trace`
-
-**Next sprints will cover:**
-- Program loading + RAM enforcement
-- ICE detection + state machines
-- Full cybercombat with D20 system
-- Node generation + loot tables
-- Spoofable comms
-- Test-ready MVP
-
-See [docs/roadmap.md] for full sprint breakdown.
-
----
-
 ## 📚 Rulebook MVP Summary
 
 Core rule systems already implemented and locked in:
