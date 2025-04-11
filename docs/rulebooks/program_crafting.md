@@ -28,7 +28,7 @@ They can crash, mutate, expose you, or take out a fortress node in one click.
 - **Type**: `attack()`, `decrypt()`, `logger()`, `spoof()`, `backdoor()`
 - **RAM Cost**: Memory required to run
 - **Cooldown**: Turns or seconds before reuse
-- **Stability**: % chance of crashing per run (increases with Heat or overload)
+- **Instability**: % chance of crashing per run (increases with Heat or overload)
 - **Detection Rating**: Difficulty for ICE to detect (Stealth programs only)
 
 ---
