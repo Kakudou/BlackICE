@@ -282,6 +282,7 @@ class CmdLoginHelp(CmdUnconnectedHelp):
 |wYou are not yet connected to a persona. Available commands:
 
   |gjack-in <name> <password>|n - Access the cyberspace with your persona.
+  |gregister_persona|n         - Create a new persona.
   |greboot|n                    - Reboot the cyberdeck and check the uplink status.
   |ghelp|n                    - Display this help text.
   |gjack-out|n                    - abort connection sequence

@@ -43,10 +43,12 @@ def connection_screen(caller):
 │  ∷ STATUS : {net_state:<34}       │
 │  ∷ GRID   : SPIRAL[∞]     |  NODE_COM[OK]            │
 │  ∷ UPLINK : {rand_ip:<34}    │
-│                                                {glitch}│
-│  jack-in <persona> <password>                       │
+│                                                   │
+│                <: Commands :>                  {glitch}│
+│  jack-in <persona> <password>  #Jack-in cyberspace  │
+│  register_persona            #Create a Persona       │
 │                                                      │
-│  jack-out                                             │
+│  jack-out                   #Back to your meat shell  │
 ├──────────────────────────────────────────────────────┤
 │  WARNING: BlackICE signature detected on this port.   │
 │  INFO: if your lost, just call the `help`.           │
