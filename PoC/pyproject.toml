@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "BlackICE_PoC"
+authors = [
+  {name = "Kakudou ~ カクドウ", email = "contact@kakudou.org"},
+]
+description = "PoC for BlackICE using Evennia Framework"
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    ]
+
+requires-python = ">=3.13"
+
+dependencies = [
+  "evennia >=4.5.0 , <5",
+  "legacy-cgi >=2.6.3, <3",
+]
+
+readme = "README.md"
+version = "0.0.0"
+
