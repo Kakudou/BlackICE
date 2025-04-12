@@ -20,11 +20,9 @@ of the screen is done by the unlogged-in "look" command.
 
 """
 
-from world.blackice_world.cyberdeck_login_prompt import connection_screen as cyberdeck_login_prompt
-
 def connection_screen():
     """
     This function is called when the user first connects to the game.
     It must return a string that will be displayed to the user.
     """
-    return cyberdeck_login_prompt()
+    return "** Booting up the cyberdeck... **\n\n"

@@ -1,6 +1,8 @@
 import random
 
-def connection_screen():
+from twisted.internet import reactor
+
+def connection_screen(caller):
     SCREEN_CLEAR = "\033[2J\033[H"
     glitch_fragments = ["▒▒▒", "░░░", "▓▓▓", "⸮⸮⸮", "███", "///", "💀💀💀"]
     net_states = [
@@ -17,8 +19,8 @@ def connection_screen():
     glitch = random.choice(glitch_fragments)
     net_state = random.choice(net_states)
 
+    caller.msg(SCREEN_CLEAR)
     bootsplash = [
-        SCREEN_CLEAR,
         "[BOOT]> Initializing Cyberdeck Firmware v3.77-BLACKICE...",
         "[OK] Deck core.................. \x1b[38;5;46mLOADED\x1b[0m",
         "[OK] Optic socket interface..... \x1b[38;5;46mREADY\x1b[0m",
@@ -26,10 +28,13 @@ def connection_screen():
         f"[SYS] Injecting bootloader traps......... {random.choice(glitch_fragments)}",
         "[ERR] Trace echo detected in uplink node...",
         "[RECOVER] Disabling watchdog......... \x1b[38;5;33m✔\x1b[0m",
-        "[OK] Node mask compiled from entropy lattice.",
+        "[OK] Node mask compiled from entropy lattice.\n",
     ]
 
-    boot_sequence = "\n".join(bootsplash)
+    delay = 1
+    for entry in bootsplash:
+        reactor.callLater(delay, caller.msg, entry)
+        delay+=0.5
 
     terminal_hud = fr"""
 ┌──────────────────────────────────────────────────────┐
@@ -39,14 +44,19 @@ def connection_screen():
 │  ∷ GRID   : SPIRAL[∞]     |  NODE_COM[OK]            │
 │  ∷ UPLINK : {rand_ip:<34}    │
 │                                                {glitch}│
-│  connect <persona> <password>   → JACK IN           │
-│  jack-in               → SPAWN REGISTER SHELL        │
-│  quit                               → ABORT SEQUENCE  │
+│  jack-in <persona> <password>                       │
+│                                                      │
+│  jack-out                                             │
 ├──────────────────────────────────────────────────────┤
 │  WARNING: BlackICE signature detected on this port.   │
+│  INFO: if your lost, just call the `help`.           │
 │  Unauthorized access will trigger neuroburn protocol. │
 └──────────────────────────────────────────────────────┘
 """
+    for entry in terminal_hud.splitlines():
+            reactor.callLater(delay, caller.msg, entry)
+            delay+=0.2
 
-    return f"{boot_sequence}\n\n{terminal_hud}"
+    return delay
+
 

@@ -1,6 +1,5 @@
 from evennia.commands.default.cmdset_unloggedin import UnloggedinCmdSet
-from commands.blackice_commands.connection.cmd_login import CmdUnloggedinLookPrompt, CmdLoginHelp, CmdBlackICEQuit
-from evennia.commands.default.unloggedin import CmdUnconnectedConnect
+from commands.blackice_commands.connection.cmd_login import CmdUnloggedinLookPrompt, CmdLoginHelp, CmdBlackICEQuit, CmdJackIn
 
 class CustomUnloggedinCmdSet(UnloggedinCmdSet):
     """
@@ -13,7 +12,8 @@ class CustomUnloggedinCmdSet(UnloggedinCmdSet):
         self.add(CmdUnloggedinLookPrompt())
         self.add(CmdLoginHelp())
         self.add(CmdBlackICEQuit())
-        self.add(CmdUnconnectedConnect())
+        self.add(CmdJackIn())
+
 
 
 
