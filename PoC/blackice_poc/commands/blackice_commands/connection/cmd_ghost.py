@@ -27,7 +27,7 @@ class CmdGhostStatus(Command):
         remaining = max(0, int(created + ttl - time.time()))
         minutes, seconds = divmod(remaining, 60)
 
-        self.caller.msg(f"|c[SYS]|n Ghost shell TTL: |w{minutes}m {seconds}s|n remaining.")
+        self.caller.msg(f"\n|c[SYS]|n Ghost shell {self.caller.name} TTL: |w{minutes}m {seconds}s|n remaining.\n")
 
         if remaining < 60:
             self.caller.msg("|r[ICE]|n Persona expiration imminent. Complete registration now.")

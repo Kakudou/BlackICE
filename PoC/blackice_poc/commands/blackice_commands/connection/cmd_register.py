@@ -1,10 +1,14 @@
-from commands.blackice_commands.cmdsets.connection.ghost import GhostCmdSet
 from evennia import Command
 from evennia.server.sessionhandler import SESSION_HANDLER
 from evennia.utils import delay, create
 import time
 import random
 import secrets
+
+from evennia.utils.search import search_object_by_tag
+
+from blackice_poc.typeclasses.blackice_typeclasses.ghost_chamber import GhostChamber
+
 
 class CmdRegisterPersona(Command):
     """
@@ -29,17 +33,28 @@ class CmdRegisterPersona(Command):
             key=ghost_id,
             email=None,
             password=ghost_password,
-            typeclass=None
+            typeclass="typeclasses.blackice_typeclasses.ghost_account.GhostAccount",
         )
 
         ghost_account.db._is_ghost = True
         ghost_account.db._registered = False
         ghost_account.db._ghost_created = time.time()
         ghost_account.db._ghost_ttl = 300  # 5 min
+        ghost_account.save()
+
+        ghost_room = search_object_by_tag("GhostChamber")
+        if not ghost_room:
+            ghost_room = create.create_object(GhostChamber, key="GhostChamber")
+            ghost_room.db.desc = (
+                "\n|c[BLACKICE NODE]|n Cybernetic soulforge. Memory residue clings to the walls.\n"
+            )
+        else:
+            ghost_room = ghost_room[0]
 
         # Create temporary character
-        char = create.create_object("typeclasses.blackice_typeclasses.persona.Persona", key=ghost_id)
-        char.home = char.location = "#2"  # TODO: Your registration room ID
+        char = create.create_object("typeclasses.blackice_typeclasses.ghost_persona.GhostPersona", key=f"persona_{ghost_id}",
+                                    home=ghost_room)
+        char.location = ghost_room
 
         char.locks.add(f"puppet:id({ghost_account.id})")
 
@@ -51,23 +66,28 @@ class CmdRegisterPersona(Command):
         ghost_account.db._last_puppet = char
         ghost_account.puppet_object(session, char)
 
-        ghost_cmdset = GhostCmdSet()
-        ghost_cmdset.obj = char
-        char.cmdset.add(ghost_cmdset, permanent=True, default=False, merge=True)
+        session.msg(f"|g[SYS]|n Ghost shell activated: {ghost_id}. Begin persona creation now.\n")
+
+        char.execute_cmd("look")
 
         # Setup TTL decay
-        delay(270, ghost_account.msg, "|y[TRACE]|n Soulprint unstable. 30 seconds until purge.")
-        delay(295, ghost_account.msg, "|r[BLACKICE]|n Final warning. Execute registration or be deleted.")
+        delay(240, ghost_account.msg, "|y[TRACE]|n Soulprint unstable. 1 minute until purge.")
+        delay(270, ghost_account.msg, "|r[BLACKICE]|n Final warning. Execute registration or be deleted in 30 seconds.")
         delay(300, self.expire_ghost_shell, ghost_account)
-
-        session.msg(f"|g[SYS]|n Ghost shell activated: {ghost_id}. Begin persona creation now.")
 
     def expire_ghost_shell(self, account):
         if not account or not account.db._is_ghost:
             return
 
-        if not account.db._registered:
-            for sess in account.sessions.all():
-                sess.msg("|r[ICE]|n Ghost shell TTL expired. Terminating uplink.")
-            account.disconnect()
-            account.delete()
+        puppet = account.db._last_puppet
+        if puppet:
+            puppet.msg("|r[ICE]|n Persona expiration imminent. Shell collapse triggered.")
+            puppet.delete()
+
+        for sess in account.sessions.all():
+            sess.msg("|r[ICE]|n Ghost shell TTL expired. Terminating uplink.")
+            sess.disconnect()
+
+        account.msg("|r[BLACKICE]|n Erasing ghost uplink…")
+        account.delete()
+
