@@ -39,47 +39,12 @@ You're always being watched. Every choice leaves digital fingerprints.
 
 ---
 
-## 🎮 Gameplay Summary
+## Rules:
 
-- **Turn-based or Real-time parsing system.**  
-  - Command structure like: `connect`, `run ghost()`, `decrypt`, `spoof_trace`, `attack`
-- **Programs as objects.**  
-  - Limited RAM per deck. Each action costs memory and stability.
-- **D20 Roll System.**  
-  - Every action resolved by `D20 + Skill + Modifiers vs DC`.
-- **Trace and Heat mechanics.**  
-  - Trace builds as you act. ICE escalates when thresholds are hit.
-- **Combat with ICE or other personas.**  
-  - Use `BlackHammer`, `Overflow`, `RAMShield`, and more.
-- **ASCII/Map-based Node Architecture.**  
-  - Players design and defend their own nodes with logic paths.
-- **Loot, Crafting, Black Market.**  
-  - ROM blueprints, rare parts, modded gear. Build legendary tools.
-- **Comms System is attackable.**  
-  - Spoofed DMs, corrupt chat logs, ghost whispers, MITM hacks.
-- **Dynamic World.**  
-  - Factions, AI outbreaks, trace storms, territory wars.
+You can read the complete rulebook in `docs/core_rulebook.md`.
 
 ---
 
-## 📚 Rulebook MVP Summary
-
-Core rule systems already implemented and locked in:
-
-- **Dice System:** D20 + skill vs DC
-- **Skills:** Stealth, Hacking, Engineering, Combat, Logic, Evasion
-- **Trace System:** Passive escalation; triggers ICE and lockdowns
-- **Program Framework:** RAM cost, cooldown, stability, corruption chance
-- **Cyberdeck Gear:** CPU, RAM, Filters, Mods, Overclock
-- **ICE AI:** Patrol, Guardian, Combat, Spider types with escalation logic
-- **Crafting:** ROM compilation puzzle + hardware blueprints
-- **Loot System:** Node-based tiered drops, trace-dependent rewards
-- **Comms Hacking:** Fake messages, ghosted logs, MITM payloads
-- **Minigames:** Log cleaning, trace delays, ROM building
-
-Everything modular. Everything expandable. Everything dangerous.
-
----
 
 ## 🧨 Devs, Come Bleed With Us
 

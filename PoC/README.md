@@ -47,23 +47,23 @@ We're learning by doing—**with intent**.
 
 ## Identified Steps (unordered and intentionally lightweight):
 
-- Custom connection screen with immersive prompts  
-- `register_persona`: Ghost-shell style account creation  
-- `login_persona`: Seamless persona authentication  
-- Procedural **grid world** generation  
-- Fibo-spiral placement of user node coordinates  
-- A `GhostChamber` that **moves daily**—node instability  
-- Movement between nodes  
-- `use rom`: simple item interaction  
-- Crafting ROMs  
-- Crafting Cyberdecks  
-- **Cyberdeck sheet**: minimal attributes display  
-- **Node sheet**: state + coordinate display  
-- **Persona sheet**: simplified profile interface  
-- Inventory management  
-- Node-based building (temp structures or upgrades)  
-- Node hacking (light minigame or command trigger)  
-- Peer-to-peer **trading**
+- [x] Custom connection screen with immersive prompts  
+- [x] `register_persona`: Ghost-shell style account creation  
+- [x] `login_persona`: Seamless persona authentication  
+- [ ] Procedural **grid world** generation  
+- [ ] Fibo-spiral placement of user node coordinates  
+- [ ] A `GhostChamber` that **moves daily**—node instability  
+- [ ] Movement between nodes  
+- [ ] `use rom`: simple item interaction  
+- [ ] Crafting ROMs  
+- [ ] Crafting Cyberdecks  
+- [ ] **Cyberdeck sheet**: minimal attributes display  
+- [ ] **Node sheet**: state + coordinate display  
+- [ ] **Persona sheet**: simplified profile interface  
+- [ ] Inventory management  
+- [ ] Node-based building (temp structures or upgrades)  
+- [ ] Node hacking (light minigame or command trigger)  
+- [ ] Peer-to-peer **trading**
 
 ---
 
